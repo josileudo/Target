@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { router } from "expo-router";
 import { HomeHeader } from "./components/HomeHeader";
+import { Target } from "./components/Target";
 
 // MARK: Ponto de entrada da aplicação
 const summary = {
@@ -9,11 +10,32 @@ const summary = {
   total: "R$ 500,00",
 };
 
+const targets = [
+  {
+    id: "1",
+    name: "Comprar uma cadeira ergonômica",
+    percentage: "75%",
+    current: "R$ 900,00",
+    target: "R$ 1.200,00",
+  },
+  {
+    id: "2",
+    name: "Comprar um novo notebook",
+    percentage: "40%",
+    current: "R$ 2.000,00",
+    target: "R$ 5.000,00",
+  },
+];
+
 export default function Index() {
   const { navigate } = router;
   return (
     <View style={{ flex: 1 }}>
       <HomeHeader data={summary} />
+
+      {targets.map((target) => (
+        <Target key={target.id} data={target} />
+      ))}
     </View>
   );
 }
