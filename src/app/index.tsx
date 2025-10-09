@@ -1,3 +1,4 @@
+import {Button} from "@/app/components/Button";
 import {List} from "@/app/components/List";
 import { View } from "react-native";
 import { router } from "expo-router";
@@ -37,10 +38,16 @@ export default function Index() {
             title="Metas"
             data={targets}
             keyExtractor={item => item.id}
-            renderItem={({item}) => <Target data={item} />}
+            renderItem={({item}) => (
+                <Target data={item} onPress={() => navigate(`/in-progress/${item.id}`)} />
+            )}
             emptyMessage="Nenhuma meta cadastrada. Cadastre suas metas!"
             containerStyle={{paddingHorizontal: 18}}
         />
+
+        <View style={{padding: 24, paddingBottom: 32 }}>
+            <Button title="Nova Meta" onPress={() => navigate("/target")}/>
+        </View>
     </View>
   );
 }

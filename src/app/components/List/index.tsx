@@ -23,7 +23,7 @@ export const List: <T>(props: Props<T>) => JSX.Element = ({
             <Text style={styles.title}>{title}</Text>
 
             <FlatList
-                data={[]}
+                data={data}
                 renderItem={renderItem}
                 ItemSeparatorComponent={ () => <Separator color={colors.gray["200"]}/> }
                 showsVerticalScrollIndicator={false}
