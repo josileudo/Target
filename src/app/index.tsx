@@ -1,3 +1,4 @@
+import {List} from "@/app/components/List";
 import { View } from "react-native";
 import { router } from "expo-router";
 import { HomeHeader } from "./components/HomeHeader";
@@ -31,11 +32,15 @@ export default function Index() {
   const { navigate } = router;
   return (
     <View style={{ flex: 1 }}>
-      <HomeHeader data={summary} />
-
-      {targets.map((target) => (
-        <Target key={target.id} data={target} />
-      ))}
+        <HomeHeader data={summary} />
+        <List
+            title="Metas"
+            data={targets}
+            keyExtractor={item => item.id}
+            renderItem={({item}) => <Target data={item} />}
+            emptyMessage="Nenhuma meta cadastrada. Cadastre suas metas!"
+            containerStyle={{paddingHorizontal: 18}}
+        />
     </View>
   );
 }
