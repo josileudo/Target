@@ -1,6 +1,6 @@
 import {Button} from "@/app/components/Button";
 import {List} from "@/app/components/List";
-import { View } from "react-native";
+import {StatusBar, View} from "react-native";
 import { router } from "expo-router";
 import { HomeHeader } from "./components/HomeHeader";
 import { Target } from "./components/Target";
@@ -33,6 +33,7 @@ export default function Index() {
   const { navigate } = router;
   return (
     <View style={{ flex: 1 }}>
+        <StatusBar barStyle='light-content' />
         <HomeHeader data={summary} />
         <List
             title="Metas"
