@@ -1,11 +1,11 @@
-import {Button} from "@/app/components/Button";
-import {List} from "@/app/components/List";
-import {StatusBar, View} from "react-native";
+import { Button } from "@/app/components/Button";
+import { List } from "@/app/components/List";
+import { StatusBar, View } from "react-native";
 import { router } from "expo-router";
 import { HomeHeader } from "./components/HomeHeader";
 import { Target } from "./components/Target";
 
-// MARK: Ponto de entrada da aplicação
+// MARK: Entrada de dados
 const summary = {
   input: { label: "Entradas", value: "R$ 1.000,00" },
   output: { label: "Saídas", value: "-R$ 500,00" },
@@ -33,22 +33,25 @@ export default function Index() {
   const { navigate } = router;
   return (
     <View style={{ flex: 1 }}>
-        <StatusBar barStyle='light-content' />
-        <HomeHeader data={summary} />
-        <List
-            title="Metas"
-            data={targets}
-            keyExtractor={item => item.id}
-            renderItem={({item}) => (
-                <Target data={item} onPress={() => navigate(`/in-progress/${item.id}`)} />
-            )}
-            emptyMessage="Nenhuma meta cadastrada. Cadastre suas metas!"
-            containerStyle={{paddingHorizontal: 18}}
-        />
+      <StatusBar barStyle="light-content" />
+      <HomeHeader data={summary} />
+      <List
+        title="Metas"
+        data={targets}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Target
+            data={item}
+            onPress={() => navigate(`/in-progress/${item.id}`)}
+          />
+        )}
+        emptyMessage="Nenhuma meta cadastrada. Cadastre suas metas!"
+        containerStyle={{ paddingHorizontal: 18 }}
+      />
 
-        <View style={{padding: 24, paddingBottom: 32 }}>
-            <Button title="Nova Meta" onPress={() => navigate("/target")}/>
-        </View>
+      <View style={{ padding: 24, paddingBottom: 32 }}>
+        <Button title="Nova Meta" onPress={() => navigate("/target")} />
+      </View>
     </View>
   );
 }
